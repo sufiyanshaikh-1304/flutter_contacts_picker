@@ -60,6 +60,17 @@ Includes search field, filter chips, contact avatars, loading state, empty state
 
 ## 🎬 Output Preview
 
+
+The demo shows:
+
+* Contact permission
+* Contact list
+* Search
+* All / Phone / Email filters
+* Alphabet navigation
+* Alphabet drag
+* Contact selection
+
 <div align="center">
 
 <img
@@ -197,32 +208,6 @@ Add the following to:
 <key>NSContactsUsageDescription</key>
 <string>This app needs access to your contacts to let you select a contact.</string>
 ```
-
----
-
-## 📌 Output Preview
-
-<div align="center">
-
-<img
-src="assets/demo.gif"
-alt="Flutter Contacts Picker Demo"
-width="320"
-/>
-
-</div>
-
-### Demo
-
-The demo shows:
-
-* Contact permission
-* Contact list
-* Search
-* All / Phone / Email filters
-* Alphabet navigation
-* Alphabet drag
-* Contact selection
 
 ---
 
