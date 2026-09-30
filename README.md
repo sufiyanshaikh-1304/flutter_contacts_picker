@@ -1,47 +1,65 @@
 # 📱 Flutter Contacts Picker
 
-A clean, customizable and easy-to-use **Contacts Picker widget for Flutter** that reads device contacts and provides search, filtering, alphabet navigation and contact selection.
+A clean and customizable Contacts Picker widget for Flutter that reads device contacts and provides search, filtering, alphabet navigation and contact selection.
 
-Built for Flutter applications that need a simple and production-ready way to display and select contacts from the user's device.
+This widget supports:
 
-## ✨ Features
-
-* ✔ Device contacts integration
+* ✔ Device contact integration
 * ✔ Single contact selection
-* ✔ Search contacts by name
-* ✔ Filter contacts by **All / Phone / Email**
+* ✔ Contact search
+* ✔ Phone & Email filters
 * ✔ Alphabetical contact sorting
-* ✔ A-Z fast alphabet navigation
-* ✔ Drag through alphabet to quickly navigate
+* ✔ A-Z alphabet navigation
+* ✔ Alphabet drag navigation
 * ✔ Phone number display
-* ✔ Email fallback when phone number is unavailable
+* ✔ Email fallback
 * ✔ Contact permission handling
-* ✔ Empty contact state
-* ✔ Loading state
+* ✔ Loading & empty states
 * ✔ Clean and responsive UI
-* ✔ Custom contact selection callback
-* ✔ Android and iOS support through `flutter_contacts`
+
+## 🚀 Features
+
+🔹 Contact Picker
+
+Display contacts from the user's device and select a contact with a simple callback.
+
+🔹 Search Contacts
+
+Search contacts by name using the built-in search field.
+
+🔹 Contact Filters
+
+Filter contacts using:
+
+* All
+* Phone
+* Email
+
+🔹 Alphabet Navigation
+
+Quickly navigate through contacts using the A-Z alphabet index.
+
+🔹 Alphabet Drag
+
+Drag vertically through the alphabet to quickly jump to contacts.
+
+🔹 Contact Information
+
+Displays phone numbers when available and automatically uses email when a phone number is not available.
+
+🔹 Permission Handling
+
+Automatically requests contact read permission and handles permission states.
+
+🔹 Clean UI
+
+Includes search field, filter chips, contact avatars, loading state, empty state and alphabet navigation.
 
 ---
 
-## 📸 Demo
+## 📦 Installation
 
-![Flutter Contacts Picker Demo](assets/demo.gif)
-
-The demo shows:
-
-* Contact permission handling
-* Contact list
-* Search
-* Phone/Email filters
-* Alphabet navigation
-* Contact selection
-
----
-
-# 🚀 Installation
-
-Add `flutter_contacts_picker` to your `pubspec.yaml`.
+Add dependency in your `pubspec.yaml`:
 
 ```yaml
 dependencies:
@@ -54,13 +72,9 @@ Then run:
 flutter pub get
 ```
 
-> Replace `VERSION` with the latest version available on pub.dev.
+Replace `VERSION` with the latest version available on pub.dev.
 
----
-
-# 📦 Git Installation
-
-You can also use the package directly from GitHub.
+### From Git
 
 ```yaml
 dependencies:
@@ -69,39 +83,29 @@ dependencies:
       url: https://github.com/sufiyanshaikh-1304/flutter_contacts_picker.git
 ```
 
-Then run:
-
-```bash
-flutter pub get
-```
-
 ---
 
-# 🛠️ How to Use
+## 🛠 How to Use
 
-## 1️⃣ Import the package
+### 1️⃣ Import the library
 
 ```dart
 import 'package:flutter_contacts_picker/flutter_contacts_picker.dart';
 ```
 
----
-
-## 2️⃣ Add `ContactsPicker`
-
-The simplest implementation:
+### 2️⃣ Example Usage
 
 ```dart
 ContactsPicker(
   onContactSelected: (contact) {
-    print(contact.displayName);
+    print('Name: ${contact.displayName}');
+    print('Phone: ${contact.phones}');
+    print('Email: ${contact.emails}');
   },
 )
 ```
 
----
-
-## 3️⃣ Complete Example
+### 3️⃣ Complete Example
 
 ```dart
 import 'package:flutter/material.dart';
@@ -130,145 +134,34 @@ class ContactScreen extends StatelessWidget {
 
 ---
 
-# 👤 Contact Selection
+## 🎨 Customizable Properties
 
-When the user taps a contact, the `onContactSelected` callback returns a `ContactPickerModel`.
+| **Property**        | **Description**                     |
+| ------------------- | ----------------------------------- |
+| `onContactSelected` | Callback when a contact is selected |
+| `multiSelect`       | Selection configuration             |
 
-```dart
-ContactsPicker(
-  onContactSelected: (contact) {
-    print(contact.displayName);
-  },
-)
-```
+### ContactPickerModel Properties
 
-You can access:
-
-```dart
-contact.id
-contact.displayName
-contact.phones
-contact.emails
-contact.photo
-```
+| **Property**  | **Description**                 |
+| ------------- | ------------------------------- |
+| `id`          | Device contact ID               |
+| `displayName` | Contact display name            |
+| `phones`      | List of contact phone numbers   |
+| `emails`      | List of contact email addresses |
+| `photo`       | Contact photo identifier        |
 
 ---
 
-# 🔎 Search Contacts
+## 🔐 Permissions
 
-The widget includes built-in contact search.
+The package automatically requests permission to read device contacts.
 
-Users can search contacts by typing in the search field.
+### Android
 
-The search works together with the available contact filters.
+Add the following permission to:
 
----
-
-# 🏷️ Contact Filters
-
-The widget provides three built-in filters:
-
-```text
-All
-Phone
-Email
-```
-
-### All
-
-Displays all available contacts.
-
-### Phone
-
-Displays contacts that have phone information.
-
-### Email
-
-Displays contacts that have email information.
-
----
-
-# 🔤 Alphabet Navigation
-
-The contact list is automatically sorted alphabetically.
-
-A vertical alphabet index is provided on the right side:
-
-```text
-#
-A
-B
-C
-D
-...
-X
-Y
-Z
-```
-
-Users can:
-
-* Tap a letter
-* Drag through the alphabet
-* Quickly jump to contacts starting with that letter
-
-The selected alphabet letter is highlighted automatically while scrolling through the contact list.
-
----
-
-# 📞 Contact Information
-
-The contact list displays the contact's name and available contact information.
-
-If a phone number is available:
-
-```text
-John Smith
-+91 9876543210
-```
-
-If a phone number is unavailable but an email exists:
-
-```text
-John Smith
-john@example.com
-```
-
-If neither is available:
-
-```text
-John Smith
-No contact information
-```
-
----
-
-# 🔐 Permissions
-
-`flutter_contacts_picker` requires permission to read contacts from the device.
-
-The package requests contact permission automatically when the widget loads.
-
-The package supports:
-
-* `PermissionStatus.granted`
-* `PermissionStatus.limited`
-
-If permission is not granted, the widget safely stops loading.
-
----
-
-# 🤖 Android Configuration
-
-For Android, make sure your application has contact permission.
-
-Open:
-
-```text
-android/app/src/main/AndroidManifest.xml
-```
-
-Add:
+`android/app/src/main/AndroidManifest.xml`
 
 ```xml
 <uses-permission android:name="android.permission.READ_CONTACTS"/>
@@ -276,144 +169,83 @@ Add:
 
 Place it outside the `<application>` tag.
 
-Example:
+### iOS
 
-```xml
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+Add the following to:
 
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
-
-    <application
-        android:label="your_app"
-        android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
-
-        ...
-
-    </application>
-
-</manifest>
-```
-
----
-
-# 🍎 iOS Configuration
-
-For iOS, add the contacts usage description to:
-
-```text
-ios/Runner/Info.plist
-```
-
-Add:
+`ios/Runner/Info.plist`
 
 ```xml
 <key>NSContactsUsageDescription</key>
 <string>This app needs access to your contacts to let you select a contact.</string>
 ```
 
-Without the required permission description, iOS may not allow the application to access contacts.
+---
+
+## 📌 Output Preview
+
+<div align="center">
+
+<img
+src="assets/demo.gif"
+alt="Flutter Contacts Picker Demo"
+width="320"
+/>
+
+</div>
+
+### Demo
+
+The demo shows:
+
+* Contact permission
+* Contact list
+* Search
+* All / Phone / Email filters
+* Alphabet navigation
+* Alphabet drag
+* Contact selection
 
 ---
 
-# ⚙️ Widget Properties
-
-| Property            | Type                            | Description                                        |
-| ------------------- | ------------------------------- | -------------------------------------------------- |
-| `onContactSelected` | `Function(ContactPickerModel)?` | Called when the user selects a contact             |
-| `multiSelect`       | `bool`                          | Configuration property for multi-selection support |
-
-### `onContactSelected`
-
-Returns the selected `ContactPickerModel`.
-
-```dart
-onContactSelected: (contact) {
-  print(contact.displayName);
-}
-```
-
-### `multiSelect`
-
-```dart
-ContactsPicker(
-  multiSelect: false,
-)
-```
-
-> Currently, contact selection is handled as a single-contact selection callback.
-
----
-
-# 📋 ContactPickerModel
-
-The selected contact is returned as a `ContactPickerModel`.
-
-Example:
-
-```dart
-ContactPickerModel(
-  id: 'contact-id',
-  displayName: 'John Smith',
-  phones: [
-    '+91 9876543210',
-  ],
-  emails: [
-    'john@example.com',
-  ],
-  photo: 'contact-id',
-)
-```
-
-Available properties:
-
-| Property      | Type           | Description              |
-| ------------- | -------------- | ------------------------ |
-| `id`          | `String`       | Device contact ID        |
-| `displayName` | `String`       | Contact display name     |
-| `phones`      | `List<String>` | Contact phone numbers    |
-| `emails`      | `List<String>` | Contact email addresses  |
-| `photo`       | `String?`      | Contact photo identifier |
-
----
-
-# 🎨 UI
-
-The widget provides a clean default interface with:
-
-* Search field
-* Filter chips
-* Contact avatars
-* Contact name
-* Phone/email information
-* Loading indicator
-* Empty state
-* Alphabet index
-* Selected alphabet indicator
-
-The widget is designed to work inside different Flutter screen layouts using:
-
-```dart
-Expanded(
-  child: ContactsPicker(),
-)
-```
-
-or other layouts where the widget receives a bounded height.
-
----
-
-# 📱 Example Project
-
-This package includes a complete example application inside the:
+## 📂 Package Structure
 
 ```text
-example/
+flutter_contacts_picker/
+│
+├── example/
+├── assets/
+│   └── demo.gif
+├── lib/
+│   ├── flutter_contacts_picker.dart
+│   └── src/
+│       ├── models/
+│       ├── utils/
+│       └── widgets/
+├── test/
+├── CHANGELOG.md
+├── LICENSE
+├── README.md
+└── pubspec.yaml
 ```
 
-directory.
+---
 
-To run the example:
+## 🧪 Testing
+
+Run:
+
+```bash
+flutter analyze
+```
+
+Run tests:
+
+```bash
+flutter test
+```
+
+Run the example:
 
 ```bash
 cd example
@@ -421,217 +253,15 @@ flutter pub get
 flutter run
 ```
 
-The example application demonstrates the package functionality and contact selection flow.
-
 ---
 
-# 🧪 Testing
-
-Before using the package in production, run:
-
-```bash
-flutter analyze
-```
-
-Then:
-
-```bash
-flutter test
-```
-
-You can also test the example application:
-
-```bash
-cd example
-flutter run
-```
-
----
-
-# 🐛 Troubleshooting
-
-## Contacts are not showing
-
-Make sure contact permission has been granted on the device.
-
-### Android
-
-Check:
-
-```text
-android/app/src/main/AndroidManifest.xml
-```
-
-for:
-
-```xml
-<uses-permission android:name="android.permission.READ_CONTACTS"/>
-```
-
-### iOS
-
-Check:
-
-```text
-ios/Runner/Info.plist
-```
-
-for:
-
-```xml
-<key>NSContactsUsageDescription</key>
-<string>This app needs access to your contacts to let you select a contact.</string>
-```
-
----
-
-## No contacts found
-
-If the widget displays:
-
-```text
-No contacts found
-```
-
-check that:
-
-* The device contains contacts.
-* Contact permission is granted.
-* The application has been restarted after changing permissions.
-
----
-
-## Alphabet navigation
-
-The alphabet index works with the currently filtered contact list.
-
-Search and filters automatically update the available contact list and alphabet navigation.
-
----
-
-# 📂 Package Structure
-
-```text
-flutter_contacts_picker/
-│
-├── android/
-├── ios/
-├── example/
-│
-├── lib/
-│   ├── flutter_contacts_picker.dart
-│   │
-│   └── src/
-│       ├── models/
-│       │   └── contact_picker_model.dart
-│       │
-│       ├── utils/
-│       │   └── contact_utils.dart
-│       │
-│       └── widgets/
-│           └── contacts_picker.dart
-│
-├── assets/
-│   └── demo.gif
-│
-├── test/
-│
-├── README.md
-├── CHANGELOG.md
-├── LICENSE
-└── pubspec.yaml
-```
-
----
-
-# 🔧 Requirements
-
-Make sure your Flutter project uses a supported Flutter/Dart version compatible with the package and its dependencies.
-
-The package uses:
-
-```text
-Flutter
-Dart
-flutter_contacts
-```
-
----
-
-# 💡 Why Use Flutter Contacts Picker?
-
-`flutter_contacts_picker` provides a ready-to-use contact selection interface without requiring you to build:
-
-* Contact permission handling
-* Contact loading
-* Contact sorting
-* Search UI
-* Phone/email filtering
-* Alphabet navigation
-* Empty states
-* Loading states
-
-You can simply add the widget and handle the selected contact through the callback.
-
----
-
-# 🌟 Example Use Cases
-
-This package can be useful for:
-
-* 💬 Chat applications
-* 📞 Calling applications
-* 👥 Invite/contact selection
-* 💳 Payment applications
-* 📤 Contact sharing
-* 👨‍👩‍👧 Family and social applications
-* 🏢 Business applications
-* 📱 Communication applications
-* 🔗 Contact-based workflows
-
----
-
-# 🤝 Contributing
-
-Contributions are welcome.
-
-If you find a bug or have an idea for an improvement:
-
-1. Fork the repository.
-2. Create a new branch.
-3. Make your changes.
-4. Run tests and analysis.
-5. Commit your changes.
-6. Push the branch.
-7. Create a Pull Request.
-
-Example:
-
-```bash
-git checkout -b feature/new-feature
-```
-
-```bash
-git add .
-```
-
-```bash
-git commit -m "Add new feature"
-```
-
-```bash
-git push origin feature/new-feature
-```
-
----
-
-# 🐞 Issues
+## 🐞 Issues
 
 If you find a bug or have a feature request, please create an issue in the GitHub repository.
 
-[Report an issue on GitHub](https://github.com/sufiyanshaikh-1304/flutter_contacts_picker/issues?utm_source=chatgpt.com)
+[Report an Issue](https://github.com/sufiyanshaikh-1304/flutter_contacts_picker/issues)
 
-When reporting a bug, include:
+When reporting an issue, please include:
 
 * Flutter version
 * Dart version
@@ -642,32 +272,53 @@ When reporting a bug, include:
 
 ---
 
-# 📄 License
+## 🤝 Contributing
 
-This package is released under the **MIT License**.
+Contributions are welcome.
 
-See the `LICENSE` file for the complete license text.
-
----
-
-# 👨‍💻 Author
-
-**Sufiyan Shaikh**
-
-Flutter Developer
-
-GitHub: [sufiyanshaikh-1304](https://github.com/sufiyanshaikh-1304?utm_source=chatgpt.com)
+1. Fork the repository.
+2. Create a new branch.
+3. Make your changes.
+4. Run `flutter analyze`.
+5. Run `flutter test`.
+6. Commit your changes.
+7. Push your branch.
+8. Create a Pull Request.
 
 ---
 
-# ⭐ Support
+## 📜 License
 
-If you find `flutter_contacts_picker` useful, consider giving the repository a ⭐ on GitHub.
+MIT License
 
-Your support helps improve and maintain the package.
+```text
+Copyright (c) 2026 Sufiyan Shaikh
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
 
 ---
 
-## 📌 Repository
+## ⭐ Support
 
-[flutter_contacts_picker on GitHub](https://github.com/sufiyanshaikh-1304/flutter_contacts_picker?utm_source=chatgpt.com)
+If you find this package useful, please give the repository a ⭐ on GitHub.
+
+### Flutter Contacts Picker
+
+Made with ❤️ using Flutter.
