@@ -57,6 +57,24 @@ Includes search field, filter chips, contact avatars, loading state, empty state
 
 ---
 
+
+## 🎬 Output Preview
+
+<div align="center">
+
+<img
+src="assets/demo.gif"
+alt="Flutter Contacts Picker Demo"
+width="320"
+/>
+
+</div>
+
+<p align="center">
+  <b>Flutter Contacts Picker Demo</b>
+</p>
+
+
 ## 📦 Installation
 
 Add dependency in your `pubspec.yaml`:
