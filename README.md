@@ -65,7 +65,7 @@ Includes search field, filter chips, contact avatars, loading state, empty state
 <img
 src="assets/contacts_demo.gif"
 alt="Flutter Contacts Picker Demo"
-width="320"
+width="200"
 />
 
 </div>
